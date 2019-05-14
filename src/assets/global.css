@@ -1,0 +1,67 @@
+html{
+    overflow:auto;
+}
+.square{
+    padding: 0;
+    min-width: 10px;
+    width: 36px;
+    margin: 0;
+}
+/*
+.v-input__control{
+    min-height: auto !important;
+}*/
+
+.active-custom{
+    color: rgba(0,0,0,.87);
+    background-color: gainsboro;
+}
+
+table.v-table tbody td:first-child, table.v-table tbody td:not(:first-child), table.v-table tbody th:first-child, table.v-table tbody th:not(:first-child), table.v-table thead td:first-child, table.v-table thead td:not(:first-child), table.v-table thead th:first-child, table.v-table thead th:not(:first-child) {
+    padding: 0 10px
+}
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.v-select__selections{
+    white-space: nowrap;
+    overflow: hidden;
+}
+tr[active]{
+    background-color: #2196F3!important;
+    color: #fff;
+}
+.print-table th, .print-table td {
+    border: 1px solid black;
+    padding-left: 0.3em;
+}
+@media screen {
+    #printSection {
+        display: none;
+    }
+    .section-to-print {
+        display: none;
+    }
+}
+@media print {
+    #main-container * {
+        display: none;
+    }
+    #printSection {
+        display:block;
+        visibility: visible;
+    }
+    #printSection* {
+        visibility: visible;
+    }
+    #printSection {
+        margin: 0;
+        padding: 0;
+        position:absolute ;
+        width: 100%;
+        left:0;
+        top:0;
+    }
+}
