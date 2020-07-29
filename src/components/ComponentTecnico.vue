@@ -2,9 +2,18 @@
     <div>
         <v-dialog v-model="dialog" scrollable persistent max-width="600px">
             <template v-slot:activator="{ on }" v-if="!modeEdit">
-                <v-btn color="info" flat
+                <!--<v-btn color="info" flat
                        class="square" v-on="on" title="Nuevo técnico">
                     <v-icon size="20">build</v-icon>
+                </v-btn>-->
+                <v-btn @click="modeCreate=true" class="white--text" color="cyan accent-4"
+                       depressed
+                       v-on="on"
+                       round
+                       small
+                >
+                    <v-icon left>add</v-icon>
+                    Registrar
                 </v-btn>
             </template>
             <v-card>
@@ -37,7 +46,7 @@
                                       item-value="abbr"
                                       :rules="rules.extension"
                                       box
-                                      label="Extensión"
+                                      label="Expedido"
                             ></v-select>
                             <v-text-field
                                     color="blue darken-4"
@@ -51,7 +60,6 @@
                             <v-text-field
                                     color="blue darken-4"
                                     background-color="blue lighten-5"
-                                    :rules="rules.apellido1"
                                     v-model="tecnico.apellido1"
                                     label="Primer Apellido"
                                     box
@@ -83,10 +91,13 @@
                             <v-overflow-btn
                                     v-model="tecnico.profesion"
                                     :items="profesiones"
+                                    item-text="nombre"
+                                    item-value="id"
                                     background-color="blue lighten-5"
                                     color="blue darken-4"
                                     label="Profesión"
                                     editable
+                                    return-object
                             ></v-overflow-btn>
                             <!--item-value="text"-->
                         </v-form>
@@ -107,6 +118,7 @@
     import axios from 'axios';
 
     export default {
+        name:'TecnicoComponent',
         props: {
             editData:{
                 default:null
@@ -114,6 +126,10 @@
             modeEdit:{
                 type:Boolean,
                 default:false
+            },
+            profesiones:{
+                type:Array,
+                default:[]
             }
         },
         data: () => ({
@@ -141,6 +157,9 @@
                     v => !!v || 'Celular es requerido',
                     // v => /.+@.+/.test(v) || 'E-mail must be valid'
                 ],
+                profesion: [
+                    v => !!v || 'Prefesion es requerido',
+                ],
             },
 
             extension: [
@@ -159,89 +178,13 @@
                 'Viva',
                 'Tigo',
             ],
-            profesiones: [
-                'Ingeniería Agronómica',
-                'Arquitectura',
-                'Artes Plásticas',
-                'Diseño Gráfico',
-                'Música',
-                'Administración de Empresas',
-                'Auditoría',
-                'Economía',
-                'Bioquímica',
-                'Química Farmacéutica',
-                'Ingeniería Geográfica',
-                'Ingeniería Geológica',
-                'Biología',
-                'Estadística',
-                'Física',
-                'Informática',
-                'Matemáticas',
-                'Química',
-                'Antropología y Arqueología',
-                'Ciencias de la Comunicación Social',
-                'Sociología',
-                'Trabajo Social',
-                'Derecho',
-                'Ciencias Políticas',
-                'Bibliotecología y Cs. Información',
-                'Ciencias de la Educación',
-                'Filosofía',
-                'Historia',
-                'Lingüística e Idiomas',
-                'Literatura',
-                'Psicología',
-                'Turismo',
-                'Ingeniería Civil',
-                'Ingeniería Eléctrica',
-                'Ingeniería Electrónica',
-                'Ingeniería de Sistemas',
-                'Ingeniería Industrial',
-                'Ingeniería Mecánica',
-                'Ingeniería Metalúrgica y Materiales',
-                'Ingeniería Petrolera',
-                'Ingeniería Química',
-                'Medicina',
-                'Enfermería',
-                'Nutrición y Dietética',
-                'Tecnología Médica',
-                'Odontología',
-                'Construcciones Civiles',
-                'Topografía Y Geodesia',
-                'Electricidad',
-                'Electrónica y Telecomunicaciones',
-                'Electromecánica',
-                'Mecánica Automotriz',
-                'Carrera de Aeronáutica',
-                'Mecánica Industrial',
-                'Química Industrial',
-                'Relaciones internacionales',
-                'Comercio Internacional',
-                'Ingeniería Comercial',
-                'Ingeniería Financiera',
-                'Ciencias Ambientales',
-                'Ingeniería Agrícola',
-                'Ingeniería Forestal',
-                'Ingeniería Ambiental',
-                'Ingeniería de Alimentos',
-                'Ingeniería Control de Procesos',
-                'Agropecuaria',
-                'Ingeniería en Metalurgia',
-                'Ingeniería en Materiales',
-                'Lenguas Modernas y Filología Hispánica (Español)',
-                'Lenguas Modernas y Filología Hispánica (Francés)',
-                'Lenguas Modernas y Filología Hispánica (Inglés)',
-                'Ingeniería en Redes y Telecomunicaciones',
-                'Licenciatura en Diseño de Interiores y del Mobiliario',
-                'Bio-Imagenología',
-                'Veterinaria y Zootecnia',
-            ],
             // model
             tecnico: new Tecnico(),
         }),
         methods: {
             submit: function () {
                 if (this.$refs.form.validate()) {
+                    this.tecnico.profesion_id = this.tecnico.profesion.id || null
                     if(!this.modeEdit){
                         this.create()
                     } else {

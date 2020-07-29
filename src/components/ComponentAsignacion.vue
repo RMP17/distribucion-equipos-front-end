@@ -49,7 +49,7 @@
                                     </v-layout>
                                 </template>
                             </v-autocomplete>
-                            <v-text-field
+                            <!--<v-text-field
                                     color="blue darken-4"
                                     background-color="blue lighten-5"
                                     :rules="rules.nombre"
@@ -57,7 +57,7 @@
                                     label="Número de Kit"
                                     box
                                     required
-                            ></v-text-field>
+                            ></v-text-field>-->
                             <v-autocomplete
                                     color="blue darken-4"
                                     box

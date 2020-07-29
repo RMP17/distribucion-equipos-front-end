@@ -10,6 +10,7 @@ export default class Estacion {
         tecnico_id = null,
         notario_id = null,
         kit_id = null,
+        punto_empadronamiento_id = null,
     ) {
         this.id = id;
         this.nro_estacion = nro_estacion;
@@ -21,6 +22,7 @@ export default class Estacion {
         this.tecnico_id = tecnico_id;
         this.notario_id = notario_id;
         this.kit_id = kit_id;
+        this.punto_empadronamiento_id = punto_empadronamiento_id;
     }
 }
 

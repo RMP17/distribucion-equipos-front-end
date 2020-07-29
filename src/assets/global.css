@@ -11,14 +11,25 @@ html{
 .v-input__control{
     min-height: auto !important;
 }*/
-
-.active-custom{
-    color: rgba(0,0,0,.87);
-    background-color: gainsboro;
+.theme--light .active-custom{
+    color: white;
+    background-color: cornflowerblue;
 }
-
-table.v-table tbody td:first-child, table.v-table tbody td:not(:first-child), table.v-table tbody th:first-child, table.v-table tbody th:not(:first-child), table.v-table thead td:first-child, table.v-table thead td:not(:first-child), table.v-table thead th:first-child, table.v-table thead th:not(:first-child) {
-    padding: 0 10px
+.active-custom:hover{
+    color: white;
+    background-color: cornflowerblue;
+}
+table.v-table tbody td:first-child,
+table.v-table tbody td:not(:first-child),
+table.v-table tbody th:first-child,
+table.v-table tbody th:not(:first-child),
+table.v-table thead td:first-child,
+table.v-table thead td:not(:first-child),
+table.v-table thead th:first-child,
+table.v-table thead th:not(:first-child) {
+    padding: 0 5px;
+    /*white-space: normal;*/
+    /*vertical-align: revert;*/
 }
 .flex-center {
     display: flex;
@@ -37,6 +48,15 @@ tr[active]{
     border: 1px solid black;
     padding-left: 0.3em;
 }
+.v-btn--active{
+    text-shadow:0 0 6px #ff4300, 0 0 6px #982800, 0 0 6px #ed7145, 0 0 6px #ed7145, 0 0 6px #ed7145;
+}
+.v-toolbar__extension{
+    background: rgba(0,0,0,0.4);
+}
+.v-toolbar__items a{
+    font-size: 11px;
+}
 @media screen {
     #printSection {
         display: none;
@@ -46,7 +66,7 @@ tr[active]{
     }
 }
 @media print {
-    #main-container * {
+    .main-container * {
         display: none;
     }
     #printSection {

@@ -1,3 +1,5 @@
+import Profesion from "./Profesion";
+
 export default class Persona{
     constructor (
         id = null,
@@ -8,7 +10,8 @@ export default class Persona{
         extension = null,
         celular = null,
         empresa_telefonica = null,
-        profesion = null
+        profesion_id = null,
+        profesion = new Profesion()
     ) {
         this.id = id;
         this.ci = ci;
@@ -18,6 +21,7 @@ export default class Persona{
         this.extension = extension;
         this.celular = celular;
         this.empresa_telefonica = empresa_telefonica;
+        this.profesion_id = profesion_id;
         this.profesion = profesion;
     }
 }

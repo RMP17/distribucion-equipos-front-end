@@ -1,10 +1,11 @@
+<!--fixme: Borrar cuando si no se necesita-->
 <template>
   <v-container fluid>
     <v-layout row>
       <!--<component-equipo @register-success="getEquipos" />-->
       <component-tecnico @register-success="getPersonal"/>
       <component-notario @register-success="getPersonal"/>
-
+      <component-user />
       <v-text-field
               color="blue darken-4"
               background-color="blue lighten-5"
@@ -88,12 +89,14 @@
     import axios from 'axios';
     import ComponentTecnico from '@/components/ComponentTecnico.vue';
     import ComponentNotario from '@/components/ComponentNotario.vue';
+    import ComponentUser from '../components/ComponentUser.vue';
 
     export default {
 
     components: {
-        ComponentTecnico,
-        ComponentNotario
+      ComponentTecnico,
+      ComponentNotario,
+      ComponentUser
     },
     mounted(){
         this.$nextTick(()=>{

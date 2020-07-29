@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: 'enproceso/distribucion-equipos/back-end/public'
+  // publicPath: 'enproceso/distribucion-equipos/back-end/public'
 }
