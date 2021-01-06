@@ -9,7 +9,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "@deveodk/vue-toastr": "^1.1.0",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "core-js": "^2.6.11",
     "material-design-icons-iconfont": "^4.0.5",
     "roboto-fontface": "*",
